@@ -1,4 +1,4 @@
-homeassistant==2025.10.2
+homeassistant==2026.3.0
 
 # Testing
 pytest-homeassistant-custom-component==0.13.316  # Matching version
