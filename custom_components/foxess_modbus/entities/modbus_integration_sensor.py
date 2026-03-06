@@ -105,7 +105,6 @@ class ModbusIntegrationSensor(ModbusEntityMixin, IntegrationSensor):
 
         self._controller = controller
         self.entity_description = entity_description
-        self.entity_id = self._get_entity_id(Platform.SENSOR)
 
         # HA 2025.8 added 'hass' as a parameter
         signature = inspect.signature(IntegrationSensor.__init__)

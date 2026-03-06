@@ -9,7 +9,6 @@ from typing import cast
 
 from homeassistant.components.binary_sensor import BinarySensorEntity
 from homeassistant.components.binary_sensor import BinarySensorEntityDescription
-from homeassistant.const import Platform
 from homeassistant.helpers.entity import Entity
 
 from ..common.entity_controller import EntityController
@@ -72,7 +71,6 @@ class ModbusBinarySensor(ModbusEntityMixin, BinarySensorEntity):
         self._controller = controller
         self.entity_description = entity_description
         self._address = address
-        self.entity_id = self._get_entity_id(Platform.BINARY_SENSOR)
 
     @property
     def is_on(self) -> bool | None:

@@ -7,7 +7,6 @@ from typing import cast
 from homeassistant.components.sensor import SensorDeviceClass
 from homeassistant.components.sensor import SensorEntity
 from homeassistant.components.sensor import SensorEntityDescription
-from homeassistant.const import Platform
 from homeassistant.helpers.entity import Entity
 
 from ..common.entity_controller import EntityController
@@ -88,7 +87,6 @@ class ModbusInverterStateSensor(ModbusEntityMixin, SensorEntity):
         self._controller = controller
         self.entity_description = entity_description
         self._address = address
-        self.entity_id = self._get_entity_id(Platform.SENSOR)
 
     @property
     def native_value(self) -> str | None:
@@ -153,7 +151,6 @@ class ModbusG2InverterStateSensor(ModbusEntityMixin, SensorEntity):
         self._controller = controller
         self.entity_description = entity_description
         self._addresses = addresses
-        self.entity_id = self._get_entity_id(Platform.SENSOR)
 
     @property
     def native_value(self) -> str | None:

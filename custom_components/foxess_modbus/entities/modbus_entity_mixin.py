@@ -38,8 +38,9 @@ def get_entity_id(controller: EntityController, platform: Platform, key: str) ->
 
     if entity_id is None:
         # This can happen when first setting up, as the target entity hasn't been created yet.
-        # In this case, assume that it's going to be correctly named
-        entity_id = _add_entity_id_prefix(key, controller.inverter_details)
+        # In this case, assume that it's going to be correctly named.
+        # Entity IDs must be lowercase (enforced since HA 2026.3).
+        entity_id = f"{platform}.{_add_entity_id_prefix(key, controller.inverter_details)}".lower()
 
     return entity_id
 
@@ -147,10 +148,6 @@ class ModbusEntityMixin(
     def _address_updated(self) -> None:
         """Called when the controller reads an updated to any of the addresses in self.addresses"""
         self.schedule_update_ha_state()
-
-    def _get_entity_id(self, platform: Platform) -> str:
-        """Gets the entity ID"""
-        return f"{platform}.{_add_entity_id_prefix(self.entity_description.key, self._controller.inverter_details)}"
 
     def _validate(
         self,

@@ -13,7 +13,6 @@ from typing import cast
 
 from homeassistant.components.sensor import SensorEntity
 from homeassistant.components.sensor import SensorEntityDescription
-from homeassistant.const import Platform
 from homeassistant.helpers.entity import Entity
 from homeassistant.helpers.typing import StateType
 
@@ -89,7 +88,6 @@ class ModbusSensor(ModbusEntityMixin, SensorEntity):
         self._addresses = addresses
         self._round_to = round_to
         self._moving_average_filter: deque[float] | None = deque(maxlen=6) if round_to is not None else None
-        self.entity_id = self._get_entity_id(Platform.SENSOR)
 
     def _calculate_native_value(self) -> int | float | None:
         """Return the value reported by the sensor."""

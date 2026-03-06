@@ -8,7 +8,6 @@ from typing import cast
 
 from homeassistant.components.select import SelectEntity
 from homeassistant.components.select import SelectEntityDescription
-from homeassistant.const import Platform
 from homeassistant.helpers.entity import Entity
 
 from ..common.entity_controller import EntityController
@@ -72,7 +71,6 @@ class ModbusSelect(ModbusEntityMixin, SelectEntity):
         self._controller = controller
         self.entity_description = entity_description
         self._address = address
-        self.entity_id = self._get_entity_id(Platform.SELECT)
         self._attr_options = list(self.entity_description.options_map.values())
 
     @property

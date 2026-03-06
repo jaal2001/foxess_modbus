@@ -10,7 +10,6 @@ from homeassistant.components.number import NumberEntity
 from homeassistant.components.number import NumberEntityDescription
 from homeassistant.components.number import NumberMode
 from homeassistant.components.number import RestoreNumber
-from homeassistant.const import Platform
 from homeassistant.helpers.entity import Entity
 
 from ..common.entity_controller import EntityController
@@ -69,7 +68,6 @@ class ModbusRemoteControlNumber(ModbusEntityMixin, RestoreNumber, NumberEntity):
         self._attr_native_max_value = float("inf")
         self._controller = controller
         self.entity_description = entity_description
-        self.entity_id = self._get_entity_id(Platform.NUMBER)
 
         assert controller.remote_control_manager is not None
         self._manager = controller.remote_control_manager

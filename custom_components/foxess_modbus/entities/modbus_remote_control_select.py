@@ -6,7 +6,6 @@ from typing import Any
 
 from homeassistant.components.select import SelectEntity
 from homeassistant.components.select import SelectEntityDescription
-from homeassistant.const import Platform
 from homeassistant.helpers.entity import Entity
 
 from ..common.entity_controller import EntityController
@@ -53,7 +52,6 @@ class ModbusRemoteControlSelect(ModbusEntityMixin, SelectEntity):
 
         self._controller = controller
         self.entity_description = entity_description
-        self.entity_id = self._get_entity_id(Platform.SELECT)
         self._options_map = {
             RemoteControlMode.DISABLE: "Disable",
             RemoteControlMode.FORCE_CHARGE: "Force Charge",

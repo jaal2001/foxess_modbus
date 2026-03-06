@@ -10,7 +10,6 @@ from typing import cast
 from homeassistant.components.number import NumberEntity
 from homeassistant.components.number import NumberEntityDescription
 from homeassistant.components.number import NumberMode
-from homeassistant.const import Platform
 from homeassistant.helpers.entity import Entity
 
 from ..common.entity_controller import EntityController
@@ -76,7 +75,6 @@ class ModbusNumber(ModbusEntityMixin, NumberEntity):
         self._controller = controller
         self.entity_description = entity_description
         self._address = address
-        self.entity_id = self._get_entity_id(Platform.NUMBER)
 
     @property
     def native_value(self) -> int | float | None:
