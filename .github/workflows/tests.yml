@@ -11,6 +11,10 @@ on:
     - cron: "0 0 * * *"
   workflow_dispatch:
 
+permissions:
+  contents: read
+  
+
 env:
   DEFAULT_PYTHON: "3.14.3"
 
