@@ -1,11 +1,11 @@
-homeassistant==2025.8.0
+homeassistant==2026.3.2
 
 # Testing
-pytest-homeassistant-custom-component==0.13.269  # Matching version
+pytest-homeassistant-custom-component==0.13.318  # Matching version
 psutil-home-assistant  # Not sure why this is needed?
 fnv_hash_fast  # Or this?
 pytest-asyncio
-pycares<5  # pycares 5.0.1 removed ares_query_a_result, incompatible with aiodns 3.5.0
+pycares>=5.0.0  # pycares 5.0.1 removed ares_query_a_result, incompatible with aiodns 3.5.0
 
 # For pytest. Keep in sync with manifest.json and https://github.com/home-assistant/core/blob/master/requirements_all.txt.
 pyserial==3.5
@@ -17,6 +17,6 @@ ruff==0.9.4
 mypy==1.15.0
 
 # Typing
-homeassistant-stubs==2025.8.0 # Matching HA version
+homeassistant-stubs==2026.3.2 # Matching HA version
 types-python-slugify==8.0.0.2
 voluptuous-stubs==0.1.1

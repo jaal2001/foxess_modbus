@@ -10,6 +10,7 @@ import copy
 import logging
 import uuid
 from typing import Any
+from typing import cast
 
 from homeassistant.components.energy.data import async_get_manager
 from homeassistant.config_entries import ConfigEntry
@@ -194,11 +195,11 @@ async def async_migrate_entry(hass: HomeAssistant, config_entry: ConfigEntry) ->
                 if energy_source["type"] == "solar":
                     energy_source.setdefault("config_entry_solar_forecast", None)
                 elif energy_source["type"] == "grid":
-                    for flow_from in energy_source.get("flow_from", []):
+                    for flow_from in cast(list[Any], energy_source.get("flow_from", [])):
                         flow_from.setdefault("stat_cost", None)
                         flow_from.setdefault("entity_energy_price", None)
                         flow_from.setdefault("number_energy_price", None)
-                    for flow_to in energy_source.get("flow_to", []):
+                    for flow_to in cast(list[Any], energy_source.get("flow_to", [])):
                         flow_to.setdefault("stat_compensation", None)
                         flow_to.setdefault("entity_energy_price", None)
                         flow_to.setdefault("number_energy_price", None)

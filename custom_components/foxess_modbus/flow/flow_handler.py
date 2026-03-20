@@ -13,7 +13,6 @@ from homeassistant.components.energy.data import BatterySourceType
 from homeassistant.components.energy.data import EnergyPreferencesUpdate
 from homeassistant.components.energy.data import FlowFromGridSourceType
 from homeassistant.components.energy.data import FlowToGridSourceType
-from homeassistant.components.energy.data import GridSourceType
 from homeassistant.components.energy.data import SolarSourceType
 from homeassistant.config_entries import ConfigFlowResult
 from homeassistant.core import callback
@@ -272,7 +271,7 @@ class FlowHandler(FlowHandlerMixin, config_entries.ConfigFlow, domain=DOMAIN):
                 ]
             )
 
-        grid_source = GridSourceType(type="grid", flow_from=[], flow_to=[], cost_adjustment_day=0.0)
+        grid_source: dict[str, Any] = {"type": "grid", "flow_from": [], "flow_to": [], "cost_adjustment_day": 0.0}
         for entity_id_prefix in entity_id_prefixes:
             name_prefix = _prefix_name(entity_id_prefix)
             grid_source["flow_from"].append(
