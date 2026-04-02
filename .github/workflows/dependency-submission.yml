@@ -1,0 +1,27 @@
+name: Automatic Dependency Submission (Python)
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - develop
+
+permissions:
+  contents: write
+
+jobs:
+  python-dependency-submission:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.14.2
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.14.2"
+
+      - name: Submit Python dependencies
+        uses: actions/dependency-submission@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
