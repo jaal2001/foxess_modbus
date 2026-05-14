@@ -14,7 +14,7 @@ pyserial==3.5
 colorlog==6.7.0
 pre-commit==4.5.1
 ruff==0.9.4
-mypy==1.20.0
+mypy==2.1.0
 
 # Typing
 homeassistant-stubs==2026.4.1 # Matching HA version
